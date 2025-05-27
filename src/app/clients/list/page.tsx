@@ -66,7 +66,7 @@ const ClientsPage = () => {
         activo: 1,
       };
 
-      if (filterType === 'name' && filterValue) params.search = filterValue;
+      if (filterType === 'name' && filterValue) params.searchClient = filterValue;
       if (filterType === 'ruc' && filterValue) params.ruc = filterValue;
 
       const response = await axiosClient.get<ClientResponse>('/api/clientes', { params });
@@ -154,8 +154,8 @@ const ClientsPage = () => {
               onChange={(e: SelectChangeEvent<string>) => setFilterType(e.target.value as 'name' | 'ruc')}
               label="Filtrar por"
             >
+              <MenuItem value="ruc">RUC/CI</MenuItem>
               <MenuItem value="name">Nombre</MenuItem>
-              <MenuItem value="ruc">RUC</MenuItem>
             </Select>
           </FormControl>
         </Grid>
