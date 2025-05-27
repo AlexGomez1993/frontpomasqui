@@ -59,26 +59,26 @@ export function SideNav(): React.JSX.Element {
         background: `
     repeating-linear-gradient(
       45deg,
-      rgba(255, 255, 255, 0.05) 0px,
-      rgba(255, 255, 255, 0.05) 2px,
+      rgba(21, 48, 99, 0.05) 0px,
+      rgba(21, 48, 99, 0.05) 2px,
       transparent 2px,
       transparent 6px
     ),
     linear-gradient(
       to bottom,
-      rgba(10, 4, 44, 0.95) 0%,
-      rgba(107, 51, 34, 0.64) 20%,
-      rgba(214, 76, 34, 0.85) 45%,
-      rgba(235, 14, 32, 0.75) 65%,
-      rgba(172, 34, 34, 0.65) 100%
+      rgba(21, 48, 99, 1) 0%,
+      rgba(21, 48, 99, 0.95) 20%,
+      rgba(21, 48, 99, 0.90) 45%,
+      rgba(21, 48, 99, 0.85) 65%,
+      rgba(21, 48, 99, 0.80) 100%
     )
   `,
         '--SideNav-color': 'var(--mui-palette-common-white)',
         '--NavItem-color': '#f4d9db',
         '--NavItem-hover-background': 'rgba(255, 255, 255, 0.04)',
-        '--NavItem-active-background': ' #1e3353',
+        '--NavItem-active-background': ' rgba(242, 101, 58,0.8)',
         '--NavItem-active-color': '#ffffff',
-        '--NavItem-disabled-color': '#c58c8f',
+        '--NavItem-disabled-color': '#f2f2f2',
         '--NavItem-icon-color': '#f3b8bc',
         '--NavItem-icon-active-color': '#ffffff',
         '--NavItem-icon-disabled-color': '#b37679',
@@ -123,7 +123,7 @@ export function SideNav(): React.JSX.Element {
         <Box
           sx={{
             alignItems: 'center',
-            backgroundColor: ' #1e3353',
+            backgroundColor: 'rgba(242, 101, 58,0.8)',
             border: '1px solid var(--mui-palette-neutral-800)',
             borderRadius: '12px',
             cursor: 'pointer',
@@ -132,17 +132,17 @@ export function SideNav(): React.JSX.Element {
           }}
         >
           <Box sx={{ flex: '1 1 auto' }}>
-            <Typography color="var(--mui-palette-neutral-400)" variant="body2">
+            <Typography color="'white" variant="body2" fontWeight={'bold'}>
               Usuario
             </Typography>
-            <Typography color="inherit" variant="subtitle1">
+            <Typography color="inherit" variant="subtitle2">
               {user ? user.nombre + ' ' + user.apellidos : null}
             </Typography>
           </Box>
           <CaretUpDownIcon />
         </Box>
       </Stack>
-      <Divider sx={{ borderColor: 'var(--mui-palette-neutral-800)' }} />
+      <Divider sx={{ borderColor: 'rgba(242, 101, 58,0.8)' }} />
       <Box component="nav" sx={{ flex: '1 1 auto', p: '12px' }}>
         {renderNavItems({ pathname, items: navItems })}
       </Box>
@@ -179,11 +179,11 @@ function NavItem({ disabled, external, href, icon, matcher, pathname, title }: N
       <Box
         {...(href
           ? {
-              component: external ? 'a' : RouterLink,
-              href,
-              target: external ? '_blank' : undefined,
-              rel: external ? 'noreferrer' : undefined,
-            }
+            component: external ? 'a' : RouterLink,
+            href,
+            target: external ? '_blank' : undefined,
+            rel: external ? 'noreferrer' : undefined,
+          }
           : { role: 'button' })}
         sx={{
           alignItems: 'center',
@@ -208,7 +208,7 @@ function NavItem({ disabled, external, href, icon, matcher, pathname, title }: N
         <Box sx={{ alignItems: 'center', display: 'flex', justifyContent: 'center', flex: '0 0 auto' }}>
           {Icon ? (
             <Icon
-              fill={active ? 'var(--mui-palette-neutral-700)' : 'var(--mui-palette-neutral-800)'}
+              fill={active ? 'white' : '#cfe3fa'}
               fontSize="var(--icon-fontSize-md)"
               weight={active ? 'fill' : undefined}
             />
@@ -217,7 +217,7 @@ function NavItem({ disabled, external, href, icon, matcher, pathname, title }: N
         <Box sx={{ flex: '1 1 auto' }}>
           <Typography
             component="span"
-            sx={{ color: 'inherit', fontSize: '0.875rem', fontWeight: 500, lineHeight: '28px' }}
+            sx={{ color: active ? 'white' : '#cfe3fa', fontSize: '0.875rem', fontWeight: 500, lineHeight: '28px' }}
           >
             {title}
           </Typography>

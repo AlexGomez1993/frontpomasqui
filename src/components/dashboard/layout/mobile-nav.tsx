@@ -59,13 +59,29 @@ export function MobileNav({ open, onClose }: MobileNavProps): React.JSX.Element 
     <Drawer
       PaperProps={{
         sx: {
-          background:  'linear-gradient(to bottom, rgba(255,255,255,1180) 0%, rgba(60, 40, 80, 0.85) 32%, rgba(40, 20, 60, 0.7) 100%)',
+          background: `
+    repeating-linear-gradient(
+      45deg,
+      rgba(21, 48, 99, 0.05) 0px,
+      rgba(21, 48, 99, 0.05) 2px,
+      transparent 2px,
+      transparent 6px
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(21, 48, 99, 1) 0%,
+      rgba(21, 48, 99, 0.95) 20%,
+      rgba(21, 48, 99, 0.90) 45%,
+      rgba(21, 48, 99, 0.85) 65%,
+      rgba(21, 48, 99, 0.80) 100%
+    )
+  `,
         '--SideNav-color': 'var(--mui-palette-common-white)',
         '--NavItem-color': 'var(--mui-palette-neutral-300)',
         '--NavItem-hover-background': 'rgba(255, 255, 255, 0.04)',
-        '--NavItem-active-background': 'var(--mui-palette-primary-main)',
+        '--NavItem-active-background': ' rgba(242, 101, 58,0.8)',
         '--NavItem-active-color': 'var(--mui-palette-primary-contrastText)',
-        '--NavItem-disabled-color': 'var(--mui-palette-neutral-500)',
+        '--NavItem-disabled-color': '#f2f2f2',
         '--NavItem-icon-color': 'var(--mui-palette-neutral-400)',
         '--NavItem-icon-active-color': 'var(--mui-palette-primary-contrastText)',
         '--NavItem-icon-disabled-color': 'var(--mui-palette-neutral-600)',
@@ -109,7 +125,7 @@ export function MobileNav({ open, onClose }: MobileNavProps): React.JSX.Element 
         <Box
           sx={{
             alignItems: 'center',
-            backgroundColor: 'rgba(51,0,27,0.9)',
+            backgroundColor: 'rgba(242, 101, 58,0.8)',
             border: '1px solid var(--mui-palette-neutral-700)',
             borderRadius: '12px',
             cursor: 'pointer',
@@ -118,17 +134,17 @@ export function MobileNav({ open, onClose }: MobileNavProps): React.JSX.Element 
           }}
         >
           <Box sx={{ flex: '1 1 auto' }}>
-            <Typography color="var(--mui-palette-neutral-400)" variant="body2">
+            <Typography color="white" variant="body2" fontWeight={'bold'}>
               Usuario
             </Typography>
-            <Typography color="rgb(255, 255, 255)" variant="subtitle1">
+            <Typography color="white" variant="subtitle2">
               {user ? user.nombre + ' ' + user.apellidos : null}
             </Typography>
           </Box>
           <CaretUpDownIcon />
         </Box>
       </Stack>
-      <Divider sx={{ borderColor: 'var(--mui-palette-neutral-700)' }} />
+      <Divider sx={{ borderColor: 'rgba(242, 101, 58,0.8)' }} />
       <Box component="nav" sx={{ flex: '1 1 auto', p: '12px' }}>
         {renderNavItems({ pathname, items: navItems })}
       </Box>
@@ -195,7 +211,7 @@ function NavItem({ disabled, external, href, icon, matcher, pathname, title }: N
         <Box sx={{ alignItems: 'center', display: 'flex', justifyContent: 'center', flex: '0 0 auto' }}>
           {Icon ? (
             <Icon
-              fill={active ? 'var(--NavItem-icon-active-color)' : 'var(--NavItem-icon-color)'}
+              fill={active ? 'white' : '#cfe3fa'}
               fontSize="var(--icon-fontSize-md)"
               weight={active ? 'fill' : undefined}
             />
@@ -204,7 +220,7 @@ function NavItem({ disabled, external, href, icon, matcher, pathname, title }: N
         <Box sx={{ flex: '1 1 auto' }}>
           <Typography
             component="span"
-            sx={{ color: 'inherit', fontSize: '0.875rem', fontWeight: 500, lineHeight: '28px' }}
+            sx={{ color: active ? 'white' : '#cfe3fa', fontSize: '0.875rem', fontWeight: 500, lineHeight: '28px' }}
           >
             {title}
           </Typography>
