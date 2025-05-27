@@ -69,43 +69,35 @@ export function SignInForm(): React.JSX.Element {
   return (
     <Box
       sx={{
-        minHeight: '100vh',
+        position: 'fixed',
+        top: 0,
+        left: 0,
         width: '100vw',
+        height: '100vh',
         backgroundImage: 'url(/assets/fondo-pomasqui.jpg)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        p: 0.5,
-        position: 'fixed',
-        top: 0,
-        left: 0,
+        p: 2,
       }}
     >
       <Box
         sx={{
           display: 'flex',
-          justifyContent: 'center',
+          flexDirection: 'column',
           alignItems: 'center',
+          justifyContent: 'center',
           width: '100%',
-          minHeight: '100vh',
-          p: 2,
+          maxWidth: 800,
+          position: 'relative',
         }}
       >
         <Stack
           spacing={3}
           sx={{
-            background: `
-        repeating-linear-gradient(
-          45deg,
-          rgba(255, 255, 255, 0.04) 0px,
-          rgba(255, 255, 255, 0.04) 2px,
-          transparent 2px,
-          transparent 6px
-        ),
-        linear-gradient(145deg, rgba(224, 108, 74, 0.9) 0%, rgba(15, 26, 43, 0.9) 100%)
-      `,
+            background: 'rgb(21, 48, 99)',
             borderRadius: 3,
             p: 4,
             boxShadow: '0 8px 24px rgba(0,0,0,0.3)',
@@ -121,13 +113,17 @@ export function SignInForm(): React.JSX.Element {
             src="/assets/logo-pomasqui.png"
             alt="Logo"
             sx={{
-              width: 180,
-              height: 110,
-              objectFit: 'contain',
-              display: 'block',
+              width: 210,
               mx: 'auto',
-              borderRadius: 1,
-              boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
+              marginBottom: 2,
+              borderRadius: 2,
+              transform: 'translateY(15px)', // Ajuste fino de alineación vertical
+              flexShrink: 0,
+              '@media (max-width: 400px)': {
+                transform: 'translateY(0)',
+                marginBottom: 2,
+                width: 180,
+              },
             }}
           />
 
@@ -143,7 +139,7 @@ export function SignInForm(): React.JSX.Element {
             Iniciar Sesión
           </Typography>
 
-          <Divider sx={{ borderColor: 'rgba(255,255,255,0.2)' }} />
+          <Divider sx={{ borderColor: 'rgba(242, 101, 58,0.6)' }} />
 
           <form onSubmit={handleSubmit(onSubmit)}>
             <Stack spacing={2}>
@@ -154,9 +150,9 @@ export function SignInForm(): React.JSX.Element {
                   <FormControl error={Boolean(errors.username)}>
                     <InputLabel
                       sx={{
-                        color: 'rgba(255,255,255,0.7)',
+                        color: 'white',
                         '&.Mui-focused': {
-                          color: 'rgba(255,255,255,0.9)',
+                          color: 'rgba(242, 101, 58,0.9)',
                         },
                       }}
                     >
@@ -166,13 +162,13 @@ export function SignInForm(): React.JSX.Element {
                       sx={{
                         color: 'white',
                         '& .MuiOutlinedInput-notchedOutline': {
-                          borderColor: 'rgba(255,255,255,0.3)',
+                          borderColor: 'rgba(242, 101, 58,0.6)',
                         },
                         '&:hover .MuiOutlinedInput-notchedOutline': {
-                          borderColor: 'rgba(255,255,255,0.5)',
+                          borderColor: 'rgba(242, 101, 58,0.6)',
                         },
                         '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-                          borderColor: 'rgba(51,0,27,0.7)',
+                          borderColor: 'rgba(242, 101, 58,0.6)',
                           borderWidth: '2px',
                         },
                       }}
@@ -190,9 +186,9 @@ export function SignInForm(): React.JSX.Element {
                   <FormControl error={Boolean(errors.password)}>
                     <InputLabel
                       sx={{
-                        color: 'rgba(255,255,255,0.7)',
+                        color: 'white',
                         '&.Mui-focused': {
-                          color: 'rgba(255,255,255,0.9)',
+                          color: 'rgba(242, 101, 58,0.9)',
                         },
                       }}
                     >
@@ -202,13 +198,13 @@ export function SignInForm(): React.JSX.Element {
                       sx={{
                         color: 'white',
                         '& .MuiOutlinedInput-notchedOutline': {
-                          borderColor: 'rgba(255,255,255,0.3)',
+                          borderColor: 'rgba(242, 101, 58,0.6)',
                         },
                         '&:hover .MuiOutlinedInput-notchedOutline': {
-                          borderColor: 'rgba(255,255,255,0.5)',
+                          borderColor: 'rgba(242, 101, 58,0.6)',
                         },
                         '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-                          borderColor: 'rgba(51,0,27,0.7)',
+                          borderColor: 'rgba(242, 101, 58,0.6)',
                           borderWidth: '2px',
                         },
                       }}
@@ -238,10 +234,10 @@ export function SignInForm(): React.JSX.Element {
               {errors.root && <Alert color="error">{errors.root.message}</Alert>}
               <Button
                 sx={{
-                  background: 'rgba(51,0,27,0.85)',
+                  background: 'rgba(242, 101, 58,0.85)',
                   color: 'white',
                   '&:hover': {
-                    background: 'rgba(51,0,27,1)',
+                    background: 'rgb(250, 80, 28)',
                     boxShadow: '0 4px 15px rgba(51,0,27,0.4)',
                   },
                   transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
