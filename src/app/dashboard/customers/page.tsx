@@ -617,7 +617,7 @@ export default function FacturaForm() {
                   <img src="${process.env.NEXT_PUBLIC_API_URL! + logo}" style="width:125px; height:75px" />
                 </td>
               </tr>
-              <tr><td colspan="2"><p class="titulo-pomasqui">PLAZA POMASQUI/p></td></tr>
+              <tr><td colspan="2"><p class="titulo-pomasqui">PLAZA POMASQUI</p></td></tr>
               <tr><td><strong>NÚMERO DE CUPON:</strong></td><td>${i}</td></tr>
               <tr><td><strong>FECHA Y HORA:</strong></td><td>${new Date().toLocaleString()}</td></tr>
               <tr><td><strong>CLIENTE:</strong></td><td>${cliente?.nombres} ${cliente?.apellidos}</td></tr>
