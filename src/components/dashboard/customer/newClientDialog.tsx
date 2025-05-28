@@ -23,7 +23,7 @@ const clienteSchema = z.object({
   fechaNacimiento: z.string().min(1, 'Requerido'),
   sexo: z.union([z.literal(1), z.literal(2)]),
   telefono: z.string().optional(),
-  celular: z.string().optional(),
+  celular: z.string().min(1, 'Requerido'),
   provincia: z.string().min(1),
   ciudad: z.string().min(1),
 });
