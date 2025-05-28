@@ -212,6 +212,8 @@ export const NewClientDialog = ({ openDialog, setOpenDialog, cliente, setCliente
                   label="Dirección/Sector"
                   fullWidth
                   size="small"
+                  error={!!errors.celular} 
+                  helperText={errors.celular?.message}
                 />
               )}
             />
@@ -254,7 +256,7 @@ export const NewClientDialog = ({ openDialog, setOpenDialog, cliente, setCliente
               name="telefono"
               control={control}
               render={({ field }) => (
-                <TextField {...field} label="Teléfono" fullWidth size="small" />
+                <TextField {...field} label="Teléfono" fullWidth size="small" error={!!errors.celular} helperText={errors.celular?.message}/>
               )}
             />
           </Grid>
@@ -263,7 +265,7 @@ export const NewClientDialog = ({ openDialog, setOpenDialog, cliente, setCliente
               name="celular"
               control={control}
               render={({ field }) => (
-                <TextField {...field} label="Celular" fullWidth size="small" />
+                <TextField {...field} label="Celular" fullWidth size="small" error={!!errors.celular} helperText={errors.celular?.message}/>
               )}
             />
           </Grid>
