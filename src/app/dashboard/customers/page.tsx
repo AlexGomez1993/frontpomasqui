@@ -37,6 +37,7 @@ import { PlusCircle, TipJar, Trash } from '@phosphor-icons/react';
 import { Store } from '@/types/comercial_store';
 import { CustomerBalance } from '@/types/customerBalance';
 import { useUser } from '@/hooks/use-user';
+import { isCedulaEcuador, isPasaporte, isRucEcuador } from '@/utils/validationCI';
 
 interface Factura {
   local_nombre: string;
@@ -94,11 +95,12 @@ export default function FacturaForm() {
   const [indiceCampania, setIndiceCampania] = useState(0);
   const [openCuponDialog, setOpenCuponDialog] = useState(false);
   const [estadoImpresion, setEstadoImpresion] = useState<'listo' | 'imprimiendo' | 'transicion' | 'finalizado'>('listo');
-  const [cuentaRegresiva, setCuentaRegresiva] = useState(5);
+  const [cuentaRegresiva, setCuentaRegresiva] = useState(2);
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [snackbarMsg, setSnackbarMsg] = useState('');
   const [snackbarType, setSnackbarType] = useState<'success' | 'error' | 'warning'>('success');
   const [isEditing, setIsEditing] = useState(false);
+  const [rucError, setRucError] = React.useState('');
   const [cliente, setCliente] = useState<Cliente>({
     id: '',
     nombres: '',
@@ -283,8 +285,19 @@ export default function FacturaForm() {
     const ruc = event.target.value;
     setCliente({ ...cliente, ciRuc: ruc });
 
-    if (ruc.length === 10 || ruc.length === 13) {
-      buscarClientePorIdentificacion(ruc);
+    if (ruc.length >= 6) {
+      const isValid = isCedulaEcuador(ruc) || isRucEcuador(ruc) || isPasaporte(ruc) || ruc=='222222222';
+      if (!isValid) {
+        setRucError('Identificación inválida');
+        return;
+      } else {
+        setRucError('');
+      }
+
+      // Busca cliente
+      if (ruc.length === 10 || ruc.length === 13 || ruc.startsWith('P')) {
+        await buscarClientePorIdentificacion(ruc);
+      }
     }
   };
 
@@ -559,7 +572,7 @@ export default function FacturaForm() {
       if (i > end) {
         // Fin de campaña actual
         setEstadoImpresion('transicion');
-        setCuentaRegresiva(5);
+        setCuentaRegresiva(2);
 
         const countdown = setInterval(() => {
           setCuentaRegresiva((prev) => {
@@ -717,6 +730,15 @@ export default function FacturaForm() {
 const handleRucKeyDown = async (event: React.KeyboardEvent<HTMLInputElement>) => {
   if (event.key === 'Enter') {
     const ruc = (event.target as HTMLInputElement).value;
+
+    const isValid = isCedulaEcuador(ruc) || isRucEcuador(ruc) || isPasaporte(ruc);
+    if (!isValid) {
+      setRucError('Identificación inválida');
+      return;
+    } else {
+      setRucError('');
+    }
+
     await buscarClientePorIdentificacion(ruc);
   }
 };
@@ -778,7 +800,16 @@ const buscarClientePorIdentificacion = async (identificacion: string) => {
       </Box>
       <Grid container spacing={2}>
         <Grid item xs={12} sm={6}>
-          <TextField fullWidth label="R.U.C." variant="outlined" onChange={handleRucChange} onKeyDown={handleRucKeyDown} size='small' />
+          <TextField 
+          fullWidth 
+          label="R.U.C." 
+          variant="outlined" 
+          onChange={handleRucChange} 
+          onKeyDown={handleRucKeyDown} 
+          size='small' 
+          error={Boolean(rucError)}
+          helperText={rucError || '* Recuerda si es pasaporte anteponer la letra P *'}
+          />
         </Grid>
         <NewClientDialog openDialog={openDialog} setOpenDialog={setOpenDialog} cliente={cliente} setCliente={setCliente} />
 
