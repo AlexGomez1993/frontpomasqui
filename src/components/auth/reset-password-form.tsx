@@ -177,14 +177,14 @@ export function ResetPasswordForm(): React.JSX.Element {
               },
             }}
           />
-          
+
           <Typography variant="h5" sx={{
             fontWeight: 800,
             color: 'common.white',
             textAlign: 'center',
             textShadow: '0 2px 4px rgba(0,0,0,0.3)',
-          }}>Recuperar contraseña</Typography>
-<Divider sx={{ borderColor: 'rgba(242, 101, 58,0.6)' }} />
+          }}>Cambiar contraseña</Typography>
+          <Divider sx={{ borderColor: 'rgba(242, 101, 58,0.6)' }} />
           <form onSubmit={handleSubmit(onSubmit)}>
             <Stack spacing={2}>
               <Controller
@@ -194,12 +194,12 @@ export function ResetPasswordForm(): React.JSX.Element {
                   <FormControl error={!!errors.email}>
                     <InputLabel sx={{
                       color: 'white',
-                        '&.Mui-focused': {
-                          color: 'rgba(242, 101, 58,0.9)',
-                        },
+                      '&.Mui-focused': {
+                        color: 'rgba(242, 101, 58,0.9)',
+                      },
                     }}>Correo electrónico</InputLabel>
-                    <OutlinedInput {...field} label="Correo electrónico" 
-                    sx={{
+                    <OutlinedInput {...field} label="Correo electrónico"
+                      sx={{
                         color: 'white',
                         '& .MuiOutlinedInput-notchedOutline': {
                           borderColor: 'rgba(242, 101, 58,0.6)',
@@ -212,7 +212,7 @@ export function ResetPasswordForm(): React.JSX.Element {
                           borderWidth: '2px',
                         },
                       }}
-                       />
+                    />
                     {errors.email && <FormHelperText>{errors.email.message}</FormHelperText>}
                   </FormControl>
                 )}
@@ -223,16 +223,16 @@ export function ResetPasswordForm(): React.JSX.Element {
                 name="ruc"
                 render={({ field }) => (
                   <FormControl error={!!errors.ruc}>
-                    <InputLabel 
-                    sx={{
+                    <InputLabel
+                      sx={{
                         color: 'white',
                         '&.Mui-focused': {
                           color: 'rgba(242, 101, 58,0.9)',
                         },
                       }}
                     >Documento de identidad</InputLabel>
-                    <OutlinedInput {...field} label="Documento de identidad" 
-                    sx={{
+                    <OutlinedInput {...field} label="Documento de identidad"
+                      sx={{
                         color: 'white',
                         '& .MuiOutlinedInput-notchedOutline': {
                           borderColor: 'rgba(242, 101, 58,0.6)',
@@ -257,27 +257,27 @@ export function ResetPasswordForm(): React.JSX.Element {
                     name="code"
                     render={({ field }) => (
                       <FormControl error={!!errors.code}>
-                        <InputLabel 
-                        sx={{
-                        color: 'white',
-                        '&.Mui-focused': {
-                          color: 'rgba(242, 101, 58,0.9)',
-                        },
-                      }}>Código</InputLabel>
-                        <OutlinedInput {...field} label="Código" 
-                        sx={{
-                        color: 'white',
-                        '& .MuiOutlinedInput-notchedOutline': {
-                          borderColor: 'rgba(242, 101, 58,0.6)',
-                        },
-                        '&:hover .MuiOutlinedInput-notchedOutline': {
-                          borderColor: 'rgba(242, 101, 58,0.6)',
-                        },
-                        '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-                          borderColor: 'rgba(242, 101, 58,0.6)',
-                          borderWidth: '2px',
-                        },
-                      }} />
+                        <InputLabel
+                          sx={{
+                            color: 'white',
+                            '&.Mui-focused': {
+                              color: 'rgba(242, 101, 58,0.9)',
+                            },
+                          }}>Código</InputLabel>
+                        <OutlinedInput {...field} label="Código"
+                          sx={{
+                            color: 'white',
+                            '& .MuiOutlinedInput-notchedOutline': {
+                              borderColor: 'rgba(242, 101, 58,0.6)',
+                            },
+                            '&:hover .MuiOutlinedInput-notchedOutline': {
+                              borderColor: 'rgba(242, 101, 58,0.6)',
+                            },
+                            '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                              borderColor: 'rgba(242, 101, 58,0.6)',
+                              borderWidth: '2px',
+                            },
+                          }} />
                         {errors.code && <FormHelperText>{errors.code.message}</FormHelperText>}
                       </FormControl>
                     )}
@@ -290,22 +290,22 @@ export function ResetPasswordForm(): React.JSX.Element {
                       <FormControl error={!!errors.newPassword}>
                         <InputLabel sx={{
                           color: 'white',
-                        '&.Mui-focused': {
-                          color: 'rgba(242, 101, 58,0.9)',
-                        },
+                          '&.Mui-focused': {
+                            color: 'rgba(242, 101, 58,0.9)',
+                          },
                         }}>Nueva contraseña</InputLabel>
                         <OutlinedInput {...field} type="password" label="Nueva contraseña" sx={{
                           color: 'white',
-                        '& .MuiOutlinedInput-notchedOutline': {
-                          borderColor: 'rgba(242, 101, 58,0.6)',
-                        },
-                        '&:hover .MuiOutlinedInput-notchedOutline': {
-                          borderColor: 'rgba(242, 101, 58,0.6)',
-                        },
-                        '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-                          borderColor: 'rgba(242, 101, 58,0.6)',
-                          borderWidth: '2px',
-                        },
+                          '& .MuiOutlinedInput-notchedOutline': {
+                            borderColor: 'rgba(242, 101, 58,0.6)',
+                          },
+                          '&:hover .MuiOutlinedInput-notchedOutline': {
+                            borderColor: 'rgba(242, 101, 58,0.6)',
+                          },
+                          '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                            borderColor: 'rgba(242, 101, 58,0.6)',
+                            borderWidth: '2px',
+                          },
                         }} />
                         {errors.newPassword && <FormHelperText>{errors.newPassword.message}</FormHelperText>}
                       </FormControl>
